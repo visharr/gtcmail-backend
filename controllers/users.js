@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override')
 
-const url = 'mongodb://vishal:asgaeaf334@ds127878.mlab.com:27878/heroku_fnf8g5jn';
+const url = process.env.MONGODB_URI;
 mongoose.connect(url);
 const conn = mongoose.createConnection(url);
 
