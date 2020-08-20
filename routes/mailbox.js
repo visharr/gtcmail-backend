@@ -1,10 +1,9 @@
-const express = require('express');
 const router = require('express-promise-router')();
 const passport = require('passport');
 const passportConf = require('../passport');
-
-const { validateBody, schemas } = require('../helpers/routehelpers');
 const MailboxController = require('../controllers/mailbox');
+const JWT = require('jsonwebtoken');
+const { JWT_secret } = require('../configuration');
 
 router.route('/outbox')
     .get(passport.authenticate('jwt', { session: false }), MailboxController.outbox)

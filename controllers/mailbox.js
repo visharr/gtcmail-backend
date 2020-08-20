@@ -1,19 +1,6 @@
-const JWT = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose');
 const Inbox = require('../models/inbox');
 const Outbox = require('../models/outbox');
 const User = require('../models/user');
-const { JWT_secret } = require('../configuration');
-
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-// Connection URL
-const url = 'mongodb://127.0.0.1:27017';
-// Database Name
-const dbName = 'APIAuthentication';
-
-
 
 module.exports = {
 

@@ -1,18 +1,16 @@
 const JWT = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 const OldUser = require('../models/oldUser');
 const User = require('../models/user');
 const { JWT_secret } = require('../configuration');
 
 const mongoose = require('mongoose');
-const path = require('path');
-const crypto = require('crypto');
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override')
-const url = 'mongodb://127.0.0.1:27017/APIAuthentication';
+
+const url = 'mongodb://vishal:asgaeaf334@ds127878.mlab.com:27878/heroku_fnf8g5jn';
+mongoose.connect(url);
+const conn = mongoose.createConnection(url);
 
 signToken = (user) => {
     return JWT.sign({
@@ -23,8 +21,6 @@ signToken = (user) => {
     }, JWT_secret);
 };
 
-mongoose.connect(url);
-const conn = mongoose.createConnection('mongodb://127.0.0.1:27017/APIAuthentication');
 conn.once('open', () => {
     //Init Stream
     gfs = Grid(conn.db, mongoose.mongo);

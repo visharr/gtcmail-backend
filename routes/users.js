@@ -1,4 +1,3 @@
-const express = require('express');
 const router = require('express-promise-router')();
 const passport = require('passport');
 const passportConf = require('../passport');
@@ -7,15 +6,14 @@ const { validateBody, schemas } = require('../helpers/routehelpers');
 const UsersController = require('../controllers/users');
 
 const mongoose = require('mongoose');
-const path = require('path');
-const crypto = require('crypto');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override')
-const url = 'mongodb://127.0.0.1:27017/APIAuthentication';
+
+const url = 'mongodb://vishal:asgaeaf334@ds127878.mlab.com:27878/heroku_fnf8g5jn';
 mongoose.connect(url);
-const conn = mongoose.createConnection('mongodb://127.0.0.1:27017/APIAuthentication');
+const conn = mongoose.createConnection(url);
 conn.once('open', () => {
     //Init Stream
     gfs = Grid(conn.db, mongoose.mongo);

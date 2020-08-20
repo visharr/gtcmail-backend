@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const path = require('path');
 const crypto = require('crypto');
@@ -11,11 +13,9 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override')
 
-const url = 'mongodb://127.0.0.1:27017/APIAuthentication';
-
-
+const url = 'mongodb://vishal:asgaeaf334@ds127878.mlab.com:27878/heroku_fnf8g5jn'
 mongoose.connect(url);
-const conn = mongoose.createConnection('mongodb://127.0.0.1:27017/APIAuthentication');
+const conn = mongoose.createConnection(url);
 
 
 conn.once('open', () => {
@@ -54,6 +54,8 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+app.use(helmet());
+app.use(compression());
 
 //Init gfs
 let gfs;
